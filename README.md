@@ -17,5 +17,5 @@ After install maven as below:<br />
   add this env variable: M2_HOME="/opt/maven/apache-maven-3.6.2"<br />
 
 * __run the application:__
-  compile with: mvn install <br />
-  java -cp ./target/escapeGame-1.0-SNAPSHOT.jar com.ocr.noel.escapeGame.Main
+  compile with: mvn clean install dependency:copy-dependencies -DoutputDirectory=target/lib<br />
+  java -jar target/escapeGame-1.0-SNAPSHOT.jar
