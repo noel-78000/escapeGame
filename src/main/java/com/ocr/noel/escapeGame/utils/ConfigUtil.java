@@ -37,12 +37,12 @@ public class ConfigUtil {
             }
             newConfigGame.setNumbersLength(numbersLength);
 
-            String nberTestMaxString = root.getChild(ConfigGameEnum.NBRE_ESSAIS.getName()).getText();
+            String nberTestMaxString = root.getChild(ConfigGameEnum.NBRE_ESSAIS_MAX.getName()).getText();
             Integer nberTestMax = getIntegerFromString(nberTestMaxString, "Error of number of test max, update your file configuration please: " + xmlFileName);
             if (nberTestMax == null) {
                 return null;
             }
-            newConfigGame.setNberTestMax(nberTestMax);
+            newConfigGame.setNbTestMax(nberTestMax);
 
             String devModeString = root.getChild(ConfigGameEnum.MODE_DEVELOPPEUR.getName()).getText();
             boolean devMode = false;
@@ -59,17 +59,17 @@ public class ConfigUtil {
     }
 
     /**
-     * Convert a String to Integer if is possible otherwise return null     *
+     * Convert a String to Integer if is possible otherwise return null
      * @param intString String to convert in Integer
-     * @param errorMessage message to log if an error occurred
+     * @param logErrorMessage message to log if an error occurred
      * @return the Integer into the String or null if it is not an Integer
      */
-    public static Integer getIntegerFromString(String intString, String errorMessage) {
+    public static Integer getIntegerFromString(String intString, String logErrorMessage) {
         Integer repInt = null;
         try {
             repInt = Integer.valueOf(intString);
         } catch (NumberFormatException e) {
-            log.error(errorMessage);
+            log.error(logErrorMessage);
         }
         return repInt;
     }
@@ -80,5 +80,36 @@ public class ConfigUtil {
      */
     public static Scanner getScannerIn() {
         return scannerIn;
+    }
+
+    /**
+     * This method create a secret number array
+     * @param length the length of the number to discover
+     * @return the secret number as a int[]
+     */
+    public static int[] generateRandomIntegerArray(int length) {
+        int[] secretNumber = new int[length];
+        for (int i = 0; i < secretNumber.length; i++) {
+            String partOfRandomNumber = String.valueOf(Math.random());
+            String aNumber = partOfRandomNumber.substring(partOfRandomNumber.length() - 1);
+            secretNumber[i] = Integer.parseInt(aNumber);
+        }
+        return secretNumber;
+    }
+
+    /**
+     * This method get an int from this representative int array
+     * @param secretNumberTab the int array to transform
+     * @return an int from the parameter or -1 if error occurred
+     */
+    public static int getIntFromIntArray(int[] secretNumberTab) {
+        if (secretNumberTab == null || secretNumberTab.length == 0) {
+            return -1;
+        }
+        int res = 0;
+        for (int i = 0; i < secretNumberTab.length; i++) {
+            res += secretNumberTab[i] * Math.pow(10, secretNumberTab.length - 1 - i);
+        }
+        return res;
     }
 }

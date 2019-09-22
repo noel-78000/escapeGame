@@ -5,7 +5,7 @@ import com.ocr.noel.escapeGame.utils.ConfigUtil;
 
 public class ConfigGame {
     private Integer numbersLength;
-    private Integer nberTestMax;
+    private Integer nbTestMax;
     boolean devMode = false;
     private static ConfigGame configGame = null;
 
@@ -15,6 +15,11 @@ public class ConfigGame {
     private ConfigGame() {
     }
 
+    /**
+     * get config of the game<br/>
+     * config file will be read only once
+     * @return the config game
+     */
     public static ConfigGame getConfigGame() {
         if (configGame == null) {
             configGame = new ConfigGame();
@@ -31,12 +36,12 @@ public class ConfigGame {
         this.numbersLength = numbersLength;
     }
 
-    public Integer getNberTestMax() {
-        return nberTestMax;
+    public Integer getNbTestMax() {
+        return nbTestMax;
     }
 
-    public void setNberTestMax(Integer nberTestMax) {
-        this.nberTestMax = nberTestMax;
+    public void setNbTestMax(Integer nbTestMax) {
+        this.nbTestMax = nbTestMax;
     }
 
     public boolean isDevMode() {

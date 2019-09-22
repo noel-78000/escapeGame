@@ -1,6 +1,5 @@
 package com.ocr.noel.escapeGame.utils;
 
-import com.ocr.noel.escapeGame.configs.ConfigGame;
 import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
@@ -21,5 +20,28 @@ class ConfigUtilTest {
     void Given_nothing_When_getSannerIn_Then_getSanner() {
         Scanner scanner = ConfigUtil.getScannerIn();
         assertEquals(Scanner.class, scanner.getClass());
+    }
+
+    @Test
+    void Given_secretNumberLength_When_call_generateRandomInteger_Then_getIntArray() {
+        int[] number = ConfigUtil.generateRandomIntegerArray(4);
+        assertEquals(4, number.length);
+        number = ConfigUtil.generateRandomIntegerArray(10);
+        assertEquals(10, number.length);
+        number = ConfigUtil.generateRandomIntegerArray(5);
+        assertEquals(5, number.length);
+    }
+
+    @Test
+    void Given_intArray_When_getIntegerFromIntArray_Then_getTheGoodNumber() {
+        int[] intArray = new int[]{1, 2, 3, 4, 5, 6};
+        int res = ConfigUtil.getIntFromIntArray(intArray);
+        assertEquals(123456, res);
+        intArray = new int[]{8, 2, 6, 4};
+        res = ConfigUtil.getIntFromIntArray(intArray);
+        assertEquals(8264, res);
+        intArray = new int[]{9, 3, 5, 4, 8, 7};
+        res = ConfigUtil.getIntFromIntArray(intArray);
+        assertEquals(935487, res);
     }
 }

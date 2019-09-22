@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <nbreChiffres>4</nbreChiffres>
-    <nbreEssais>3</nbreEssais>
+    <nbreEssaisMax>3</nbreEssaisMax>
     <!-- modeDeveloppeur doit etre a O ou N-->
     <modeDeveloppeur>O</modeDeveloppeur>
 </config>

@@ -2,7 +2,7 @@ package com.ocr.noel.escapeGame.enums;
 
 public enum ConfigGameEnum {
     NBRE_CHIFFRES ("nbreChiffres"),
-    NBRE_ESSAIS ("nbreEssais"),
+    NBRE_ESSAIS_MAX("nbreEssaisMax"),
     MODE_DEVELOPPEUR ("modeDeveloppeur"),
     CONFIG_FILE_NAME ("configGame.xml");
 
