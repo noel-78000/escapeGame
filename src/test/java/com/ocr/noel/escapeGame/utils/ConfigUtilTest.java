@@ -44,4 +44,14 @@ class ConfigUtilTest {
         res = ConfigUtil.getIntFromIntArray(intArray);
         assertEquals(935487, res);
     }
+
+    @Test
+    void Given_number_When_getIntArrayFromStringNumber_Then_getGoodArray() {
+        String number = "1234";
+        int[] numberArray = ConfigUtil.getIntArrayFromStringNumber(number);
+        assertEquals(1, numberArray[0]);
+        assertEquals(2, numberArray[1]);
+        assertEquals(3, numberArray[2]);
+        assertEquals(4, numberArray[3]);
+    }
 }

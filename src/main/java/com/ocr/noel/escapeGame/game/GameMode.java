@@ -58,7 +58,6 @@ public abstract class GameMode {
                 }
                 String compareResult = getStringCompare(intString, getSecretNumberArray());
                 this.numberOfTest++;
-                //System.out.println("nombre de test effectuer est: " +this.numberOfTest);
                 System.out.println("le resultat est : " + compareResult);
                 if (compareResult.replace("=", "").length() == 0){
                     return true;

@@ -37,7 +37,10 @@ public class Game {
                     break;
 
                 case "2" :
-                    System.out.println("mode: " + GameChoiceEnum.DEFENSEUR.getDescription() + " choisi");
+                    GameDefender gameDefender = new GameDefender(ConfigUtil.getScannerIn(), ConfigGame.getConfigGame());
+                    do {
+                        gameDefender.startGame();
+                    } while (gameDefender.askIfReplayGame());
                     break;
 
                 case "3" :

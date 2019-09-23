@@ -112,4 +112,17 @@ public class ConfigUtil {
         }
         return res;
     }
+
+    /**
+     * this method return an int array from a String number
+     * @param number the number to convert into an array of int
+     * @return an int array from a String number
+     */
+    public static int[] getIntArrayFromStringNumber(String number) {
+        int[] intArray = new int[number.length()];
+        for (int i = 0; i < number.length(); i++) {
+            intArray[i] = Integer.parseInt(number.substring(i, i + 1));
+        }
+        return intArray;
+    }
 }
