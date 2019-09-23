@@ -9,7 +9,7 @@ public abstract class GameMode {
     private int numberOfTest = 0;
     private Scanner scannerIn;
     private ConfigGame configGame;
-    private int[] secretNumberArray;
+    private int[] secretNumberArray = null;
 
     public GameMode(Scanner scannerIn, ConfigGame configGame) {
         this.scannerIn = scannerIn;
