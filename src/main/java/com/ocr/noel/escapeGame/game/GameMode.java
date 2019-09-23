@@ -85,10 +85,10 @@ public abstract class GameMode {
                 compareResult += "=";
                 continue;
             } else if (val > secretNumberArray[i]) {
-                compareResult += "+";
+                compareResult += "-";
                 continue;
             } else {
-                compareResult += "-";
+                compareResult += "+";
             }
         }
         return  compareResult;
