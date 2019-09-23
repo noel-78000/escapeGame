@@ -28,6 +28,7 @@ public class GameChallenger extends GameMode {
                 return;
             }
         }
+        System.out.println("Le nombre secret était: " + ConfigUtil.getIntFromIntArray(getSecretNumberArray()));
         System.out.println("Vous avez perdu!");
     }
 }

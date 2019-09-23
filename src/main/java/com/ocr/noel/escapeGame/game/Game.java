@@ -12,12 +12,18 @@ public class Game {
 
     public Game() {}
 
+    /**
+     * The method to start the game
+     */
     public void startGame() {
         log.info("Game start");
         ConfigGame.getConfigGame();
         choiceMode();
     }
 
+    /**
+     * Method to choice a mode of game or quit the game
+     */
     private void choiceMode() {
         printChoiceModeOfGame();
         while (ConfigUtil.getScannerIn().hasNext()) {

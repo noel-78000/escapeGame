@@ -11,11 +11,19 @@ public abstract class GameMode {
     private ConfigGame configGame;
     private int[] secretNumberArray = null;
 
+    /**
+     * Constructor of game
+     * @param scannerIn the scanner to get input from keyboard
+     * @param configGame the config of the game
+     */
     public GameMode(Scanner scannerIn, ConfigGame configGame) {
         this.scannerIn = scannerIn;
         this.configGame = configGame;
     }
 
+    /**
+     * The method to start a mode of game
+     */
     public abstract void startGame();
 
     protected boolean askIfReplayGame() {
@@ -64,6 +72,12 @@ public abstract class GameMode {
         return false;
     }
 
+    /**
+     * compare the String number to the secret number and return the String result formatted
+     * @param intString number to compare with the secret number
+     * @param secretNumberArray the secret number
+     * @return the result of the the comparison between the two arguments
+     */
     protected String getStringCompare(String intString, int[] secretNumberArray) {
         String compareResult = "";
         for (int i = 0; i < secretNumberArray.length; i++) {
