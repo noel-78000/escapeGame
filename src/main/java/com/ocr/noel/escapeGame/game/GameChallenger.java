@@ -25,10 +25,12 @@ public class GameChallenger extends GameMode {
         while (getNumberOfTest() < getConfigGame().getNbTestMax()) {
             if (isNewEntryOK()) {
                 System.out.println("Vous avez gagné!");
+                setSecretNumberArray(null);
                 return;
             }
         }
         System.out.println("Le nombre secret était: " + ConfigUtil.getIntFromIntArray(getSecretNumberArray()));
         System.out.println("Vous avez perdu!");
+        setSecretNumberArray(null);
     }
 }

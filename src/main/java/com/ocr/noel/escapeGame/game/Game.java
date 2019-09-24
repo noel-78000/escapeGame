@@ -44,7 +44,11 @@ public class Game {
                     break;
 
                 case "3" :
-                    System.out.println("mode: " + GameChoiceEnum.DUEL.getDescription() + " choisi");
+                    GameDuel gameDuel = new GameDuel(ConfigUtil.getScannerIn(), ConfigGame.getConfigGame());
+                    do {
+                        gameDuel.startGame();
+                    }
+                    while (gameDuel.askIfReplayGame());
                     break;
 
                 case "q" :
