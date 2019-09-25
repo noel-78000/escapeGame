@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameChallengerTest {
 
     @Test
-    void Given_goodNumber_When_startGame_Then_gameWon() throws IOException {
+    void givenGoodNumberWhenStartGameThenGameWon() throws IOException {
         String input = "1234" + System.lineSeparator();
         InputStream in = new ByteArrayInputStream(input.getBytes());
         Scanner scanner = new Scanner(in);
@@ -34,7 +34,7 @@ class GameChallengerTest {
     }
 
     @Test
-    void Given_wrongNumber_When_startGame_Then_gameLost() {
+    void givenWrongNumberWhenStartGameThenGameLost() {
         String input = "4523" + System.lineSeparator();
         input += "7236" + System.lineSeparator();
         input += "6152" + System.lineSeparator();

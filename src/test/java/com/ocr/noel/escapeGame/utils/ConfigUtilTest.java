@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ConfigUtilTest {
 
     @Test
-    void Given_IntegerString_When_callUtil_getIntegerFromString_Then_GetTheGoodInteger() {
+    void givenIntegerStringWhenCallGetIntegerFromStringThenGetTheGoodInteger() {
         Integer testInteger = ConfigUtil.getIntegerFromString("1234", "Test good Integer");
         assertEquals(1234, testInteger);
         testInteger = ConfigUtil.getIntegerFromString("bad Integer", "From JUnitTest bad Integer");
@@ -17,13 +17,13 @@ class ConfigUtilTest {
     }
 
     @Test
-    void Given_nothing_When_getSannerIn_Then_getSanner() {
+    void givenNothingWhenGetSannerInThenGetSanner() {
         Scanner scanner = ConfigUtil.getScannerIn();
         assertEquals(Scanner.class, scanner.getClass());
     }
 
     @Test
-    void Given_secretNumberLength_When_call_generateRandomInteger_Then_getIntArray() {
+    void givenSecretNumberLengthWhenCallGenerateRandomIntegerThenGetIntArray() {
         int[] number = ConfigUtil.generateRandomIntegerArray(4);
         assertEquals(4, number.length);
         number = ConfigUtil.generateRandomIntegerArray(10);
@@ -33,7 +33,7 @@ class ConfigUtilTest {
     }
 
     @Test
-    void Given_intArray_When_getIntegerFromIntArray_Then_getTheGoodNumber() {
+    void givenIntArrayWhenGetIntegerFromIntArrayThenGetTheGoodNumber() {
         int[] intArray = new int[]{1, 2, 3, 4, 5, 6};
         int res = ConfigUtil.getIntFromIntArray(intArray);
         assertEquals(123456, res);
@@ -46,7 +46,7 @@ class ConfigUtilTest {
     }
 
     @Test
-    void Given_number_When_getIntArrayFromStringNumber_Then_getGoodArray() {
+    void givenNumberWhenGetIntArrayFromStringNumberThenGetGoodArray() {
         String number = "1234";
         int[] numberArray = ConfigUtil.getIntArrayFromStringNumber(number);
         assertEquals(1, numberArray[0]);

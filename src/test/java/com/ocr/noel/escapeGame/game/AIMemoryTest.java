@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AIMemoryTest {
 
     @Test
-    void Given_StringResult_When_getNewNumber_Then_testNewNumber() {
+    void givenStringResultWhenGetNewNumberThenTtestNewNumber() {
         AIMemory aiMemory = new AIMemory(4);
         int[] numberInitialTemp = aiMemory.getNewNumber("");
         for (int i = 0; i < numberInitialTemp.length; i++) {
