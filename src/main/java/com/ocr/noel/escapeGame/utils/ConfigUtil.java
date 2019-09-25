@@ -32,12 +32,18 @@ public class ConfigUtil {
         } catch (IOException e) {
             log.debug("No external existing " + ConfigGameEnum.PROPERTIES_FILE_NAME.getName() + ".properties file, the default config.properties will be used");
         }
-        int nberTestMax = Integer.parseInt(config.getString(ConfigGameEnum.NBRE_ESSAIS_MAX.getName()));
-        newConfigGame.setNbTestMax(nberTestMax);
-        boolean devMode = Boolean.valueOf(config.getString(ConfigGameEnum.MODE_DEVELOPPEUR.getName()));
+        Integer nberTestMax = getIntegerFromString(config.getString(ConfigGameEnum.NBRE_ESSAIS_MAX.getName()),
+                "Reading file " + ConfigGameEnum.PROPERTIES_FILE_NAME.getName() + ".properties, parameter NBRE_ESSAIS_MAX is not found");
+        if (nberTestMax != null) {
+            newConfigGame.setNbTestMax(nberTestMax);
+        }
+        boolean devMode = Boolean.parseBoolean(config.getString(ConfigGameEnum.MODE_DEVELOPPEUR.getName()));
         newConfigGame.setDevMode(devMode);
-        int numberLength = Integer.parseInt(config.getString(ConfigGameEnum.NBRE_CHIFFRES.getName()));
-        newConfigGame.setNumbersLength(numberLength);
+        Integer numberLength = getIntegerFromString(config.getString(ConfigGameEnum.NBRE_CHIFFRES.getName()),
+        "Reading file " + ConfigGameEnum.PROPERTIES_FILE_NAME.getName() + ".properties, parameter NBRE_CHIFFRES is not found. the default is 4");
+        if (numberLength != null) {
+            newConfigGame.setNumbersLength(numberLength);
+        }
         return newConfigGame;
     }
 

@@ -4,9 +4,9 @@ import com.ocr.noel.escapeGame.enums.ConfigGameEnum;
 import com.ocr.noel.escapeGame.utils.ConfigUtil;
 
 public class ConfigGame {
-    private Integer numbersLength;
+    private Integer numbersLength = 4;
     private Integer nbTestMax;
-    boolean devMode = false;
+    private boolean devMode = false;
     private static ConfigGame configGame = null;
 
     /**
