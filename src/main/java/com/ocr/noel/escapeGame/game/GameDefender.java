@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 public class GameDefender extends GameMode {
 
-    public GameDefender(Scanner scannerIn, ConfigGame configGame) {
-        super(scannerIn, configGame);
+    public GameDefender() {
     }
 
     @Override
@@ -25,7 +24,7 @@ public class GameDefender extends GameMode {
             System.out.print("L\'ordinateur propose: " + ConfigUtil.getIntFromIntArray(newProposalNumber) + ", entrer le résultat: ");
             setNumberOfTest(getNumberOfTest() + 1);
             resultComparison = getResultComparison();
-            if (resultComparison.replace("=","").length() == 0){
+            if (resultComparison.replace("=", "").length() == 0) {
                 computerWin = true;
             }
         } while (!computerWin && getNumberOfTest() < getConfigGame().getNbTestMax());
@@ -45,7 +44,7 @@ public class GameDefender extends GameMode {
         while (getScannerIn().hasNext()) {
             String line = getScannerIn().nextLine().trim();
             if (line.length() == getConfigGame().getNumbersLength() &&
-                    line.replace("=","").replace("+","").replace("-","").length() == 0) {
+                    line.replace("=", "").replace("+", "").replace("-", "").length() == 0) {
                 return line;
             } else {
                 System.out.println("Il y a une erreur dans la saisie. Veuillez saisir " + getConfigGame().getNumbersLength() + " de = ou + ou -");

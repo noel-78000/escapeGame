@@ -19,7 +19,9 @@ class GameChallengerTest {
         configGame.setNumbersLength(4);
         configGame.setDevMode(false);
         configGame.setNbTestMax(3);
-        GameChallenger gameChallenger = new GameChallenger(scanner, configGame);
+        GameChallenger gameChallenger = new GameChallenger();
+        gameChallenger.setScannerIn(scanner);
+        gameChallenger.setConfigGame(configGame);
         gameChallenger.setSecretNumberArray(new int[]{1, 2, 3, 4});
         ByteArrayOutputStream bb = new ByteArrayOutputStream();
         java.io.BufferedOutputStream outputStream = new BufferedOutputStream(bb);
@@ -42,7 +44,9 @@ class GameChallengerTest {
         configGame.setNumbersLength(4);
         configGame.setDevMode(false);
         configGame.setNbTestMax(3);
-        GameChallenger gameChallenger = new GameChallenger(scanner, configGame);
+        GameChallenger gameChallenger = new GameChallenger();
+        gameChallenger.setScannerIn(scanner);
+        gameChallenger.setConfigGame(configGame);
         gameChallenger.setSecretNumberArray(new int[]{1, 2, 3, 4});
         ByteArrayOutputStream bb = new ByteArrayOutputStream();
         java.io.BufferedOutputStream outputStream = new BufferedOutputStream(bb);

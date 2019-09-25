@@ -13,12 +13,8 @@ public abstract class GameMode {
 
     /**
      * Constructor of game
-     * @param scannerIn the scanner to get input from keyboard
-     * @param configGame the config of the game
      */
-    public GameMode(Scanner scannerIn, ConfigGame configGame) {
-        this.scannerIn = scannerIn;
-        this.configGame = configGame;
+    public GameMode() {
     }
 
     /**
@@ -44,6 +40,7 @@ public abstract class GameMode {
 
     /**
      * This method ask a new number and test it if match
+     *
      * @return true if the number match, otherwise false
      */
     protected boolean isNewEntryOK() {
@@ -59,7 +56,7 @@ public abstract class GameMode {
                 String compareResult = getStringCompare(intString, getSecretNumberArray());
                 this.numberOfTest++;
                 System.out.println("le resultat est : " + compareResult);
-                if (compareResult.replace("=", "").length() == 0){
+                if (compareResult.replace("=", "").length() == 0) {
                     return true;
                 } else {
                     return false;
@@ -73,7 +70,8 @@ public abstract class GameMode {
 
     /**
      * compare the String number to the secret number and return the String result formatted
-     * @param intString number to compare with the secret number
+     *
+     * @param intString         number to compare with the secret number
      * @param secretNumberArray the secret number
      * @return the result of the the comparison between the two arguments
      */
@@ -91,7 +89,7 @@ public abstract class GameMode {
                 compareResult += "+";
             }
         }
-        return  compareResult;
+        return compareResult;
     }
 
     public int getNumberOfTest() {
@@ -106,8 +104,16 @@ public abstract class GameMode {
         return scannerIn;
     }
 
+    public void setScannerIn(Scanner scannerIn) {
+        this.scannerIn = scannerIn;
+    }
+
     public ConfigGame getConfigGame() {
         return configGame;
+    }
+
+    public void setConfigGame(ConfigGame configGame) {
+        this.configGame = configGame;
     }
 
     public int[] getSecretNumberArray() {

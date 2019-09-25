@@ -10,7 +10,8 @@ public class Game {
     private final static Logger log = LogManager.getLogger(Game.class);
     private Integer secretNumber = new Integer(1234);
 
-    public Game() {}
+    public Game() {
+    }
 
     /**
      * The method to start the game
@@ -29,29 +30,35 @@ public class Game {
         while (ConfigUtil.getScannerIn().hasNext()) {
             String line = ConfigUtil.getScannerIn().nextLine().trim().toLowerCase();
             switch (line) {
-                case "1" :
-                    GameChallenger gameChallenger = new GameChallenger(ConfigUtil.getScannerIn(), ConfigGame.getConfigGame());
+                case "1":
+                    GameChallenger gameChallenger = new GameChallenger();
+                    gameChallenger.setScannerIn(ConfigUtil.getScannerIn());
+                    gameChallenger.setConfigGame(ConfigGame.getConfigGame());
                     do {
                         gameChallenger.startGame();
                     } while (gameChallenger.askIfReplayGame());
                     break;
 
-                case "2" :
-                    GameDefender gameDefender = new GameDefender(ConfigUtil.getScannerIn(), ConfigGame.getConfigGame());
+                case "2":
+                    GameDefender gameDefender = new GameDefender();
+                    gameDefender.setScannerIn(ConfigUtil.getScannerIn());
+                    gameDefender.setConfigGame(ConfigGame.getConfigGame());
                     do {
                         gameDefender.startGame();
                     } while (gameDefender.askIfReplayGame());
                     break;
 
-                case "3" :
-                    GameDuel gameDuel = new GameDuel(ConfigUtil.getScannerIn(), ConfigGame.getConfigGame());
+                case "3":
+                    GameDuel gameDuel = new GameDuel();
+                    gameDuel.setScannerIn(ConfigUtil.getScannerIn());
+                    gameDuel.setConfigGame(ConfigGame.getConfigGame());
                     do {
                         gameDuel.startGame();
                     }
                     while (gameDuel.askIfReplayGame());
                     break;
 
-                case "q" :
+                case "q":
                     stopGame();
                     break;
 

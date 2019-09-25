@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 public class GameChallenger extends GameMode {
 
-    public GameChallenger(Scanner scannerIn, ConfigGame configGame) {
-        super(scannerIn, configGame);
+    public GameChallenger() {
     }
 
     @Override

@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 public class GameDuel extends GameMode {
 
-    public GameDuel(Scanner scannerIn, ConfigGame configGame) {
-        super(scannerIn, configGame);
+    public GameDuel() {
     }
 
     @Override
@@ -35,7 +34,7 @@ public class GameDuel extends GameMode {
                 System.out.println("L\'ordinateur a donné: " + resNumberAI + ", le resultat est: " + lastResultForAI);
                 if (lastResultForAI.replace("=", "").length() == 0) {
                     System.out.println("L\'ordinateur a gagné!");
-                    gameOver=true;
+                    gameOver = true;
                 }
             }
         }
