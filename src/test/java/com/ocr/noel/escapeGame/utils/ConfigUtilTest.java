@@ -12,7 +12,7 @@ class ConfigUtilTest {
     void Given_IntegerString_When_callUtil_getIntegerFromString_Then_GetTheGoodInteger() {
         Integer testInteger = ConfigUtil.getIntegerFromString("1234", "Test good Integer");
         assertEquals(1234, testInteger);
-        testInteger = ConfigUtil.getIntegerFromString("bad Integer", "Test bad Integer");
+        testInteger = ConfigUtil.getIntegerFromString("bad Integer", "From JUnitTest bad Integer");
         assertEquals(null, testInteger);
     }
 

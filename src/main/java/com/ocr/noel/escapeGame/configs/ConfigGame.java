@@ -23,7 +23,7 @@ public class ConfigGame {
     public static ConfigGame getConfigGame() {
         if (configGame == null) {
             configGame = new ConfigGame();
-            ConfigUtil.setUpConfigGameFromXMLFile(ConfigGameEnum.CONFIG_FILE_NAME.getName(), configGame);
+            ConfigUtil.setUpConfigGameFromPropertiesFile(configGame);
         }
         return configGame;
     }

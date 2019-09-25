@@ -4,7 +4,7 @@ public enum ConfigGameEnum {
     NBRE_CHIFFRES ("nbreChiffres"),
     NBRE_ESSAIS_MAX("nbreEssaisMax"),
     MODE_DEVELOPPEUR ("modeDeveloppeur"),
-    CONFIG_FILE_NAME ("configGame.xml");
+    PROPERTIES_FILE_NAME("config");
 
     private final String name;
 

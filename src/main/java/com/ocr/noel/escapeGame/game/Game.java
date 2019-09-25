@@ -76,6 +76,7 @@ public class Game {
     private void stopGame() {
         System.out.println("Le jeu est terminé!");
         ConfigUtil.getScannerIn().close();
+        log.info("end of the game.");
         System.exit(0);
     }
 }
