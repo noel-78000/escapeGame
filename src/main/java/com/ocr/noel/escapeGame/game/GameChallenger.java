@@ -1,10 +1,7 @@
 package com.ocr.noel.escapeGame.game;
 
-import com.ocr.noel.escapeGame.configs.ConfigGame;
 import com.ocr.noel.escapeGame.enums.GameChoiceEnum;
 import com.ocr.noel.escapeGame.utils.ConfigUtil;
-
-import java.util.Scanner;
 
 public class GameChallenger extends GameMode {
 

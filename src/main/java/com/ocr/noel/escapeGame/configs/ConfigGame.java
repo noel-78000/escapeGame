@@ -1,6 +1,5 @@
 package com.ocr.noel.escapeGame.configs;
 
-import com.ocr.noel.escapeGame.enums.ConfigGameEnum;
 import com.ocr.noel.escapeGame.utils.ConfigUtil;
 
 public class ConfigGame {
