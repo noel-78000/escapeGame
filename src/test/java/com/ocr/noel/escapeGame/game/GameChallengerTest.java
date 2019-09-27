@@ -15,7 +15,7 @@ class GameChallengerTest {
         String input = "1234" + System.lineSeparator();
         InputStream in = new ByteArrayInputStream(input.getBytes());
         Scanner scanner = new Scanner(in);
-        ConfigGame configGame = ConfigGame.getConfigGame();
+        ConfigGame configGame = ConfigGame.getInstance();
         configGame.setNumbersLength(4);
         configGame.setDevMode(false);
         configGame.setNbTestMax(3);
@@ -40,7 +40,7 @@ class GameChallengerTest {
         input += "6152" + System.lineSeparator();
         InputStream in = new ByteArrayInputStream(input.getBytes());
         Scanner scanner = new Scanner(in);
-        ConfigGame configGame = ConfigGame.getConfigGame();
+        ConfigGame configGame = ConfigGame.getInstance();
         configGame.setNumbersLength(4);
         configGame.setDevMode(false);
         configGame.setNbTestMax(3);

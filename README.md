@@ -7,7 +7,7 @@ This application can be run by main method in Main class
 * __install maven on your system__<br />
   You could find help here: https://maven.apache.org/install.html
 
-* __Compile:__
+* __compile:__
   mvn clean install dependency:copy-dependencies -DoutputDirectory=target/lib -Dmaven.test.skip=true -PuseExternalConfigFiles<br />
 
 * __run the application:__

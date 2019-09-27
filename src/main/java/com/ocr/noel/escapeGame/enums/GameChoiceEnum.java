@@ -1,9 +1,8 @@
 package com.ocr.noel.escapeGame.enums;
 
 public enum GameChoiceEnum {
-    OTHER ("0", "Autre choix"),
     CHALLENGER ("1", "Challenger"),
-    DEFENSEUR ("2", "Defenseur"),
+    DEFENDER("2", "Defenseur"),
     DUEL ("3", "Duel"),
     GAME_LEAVE ("q" , "Quitter le jeu");
 

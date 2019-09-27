@@ -1,17 +1,20 @@
 package com.ocr.noel.escapeGame.configs;
 
-import com.ocr.noel.escapeGame.utils.ConfigUtil;
+import java.util.ResourceBundle;
 
 public class ConfigGame {
-    private Integer numbersLength = 4;
-    private Integer nbTestMax;
-    private boolean devMode = false;
-    private static ConfigGame configGame = null;
+    private Integer numbersLength, nbTestMax;
+    private boolean devMode;
+    private static ConfigGame instance = null;
 
     /**
      * This constructor is not accessible excepted in this class
      */
     private ConfigGame() {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("config");
+        numbersLength = Integer.parseInt(resourceBundle.getString("numbersLength"));
+        nbTestMax = Integer.parseInt(resourceBundle.getString("nbTestMax"));
+        devMode = Boolean.parseBoolean(resourceBundle.getString("devMode"));
     }
 
     /**
@@ -19,12 +22,11 @@ public class ConfigGame {
      * config file will be read only once
      * @return the config game
      */
-    public static ConfigGame getConfigGame() {
-        if (configGame == null) {
-            configGame = new ConfigGame();
-            ConfigUtil.setUpConfigGameFromPropertiesFile(configGame);
+    public static ConfigGame getInstance() {
+        if (instance == null) {
+            instance = new ConfigGame();
         }
-        return configGame;
+        return instance;
     }
 
     public Integer getNumbersLength() {

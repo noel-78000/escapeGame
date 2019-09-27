@@ -8,7 +8,6 @@ import org.apache.logging.log4j.Logger;
 
 public class Game {
     private final static Logger log = LogManager.getLogger(Game.class);
-    private Integer secretNumber = new Integer(1234);
 
     public Game() {
     }
@@ -18,7 +17,6 @@ public class Game {
      */
     public void startGame() {
         log.info("Game start");
-        ConfigGame.getConfigGame();
         choiceMode();
     }
 
@@ -33,7 +31,6 @@ public class Game {
                 case "1":
                     GameChallenger gameChallenger = new GameChallenger();
                     gameChallenger.setScannerIn(ConfigUtil.getScannerIn());
-                    gameChallenger.setConfigGame(ConfigGame.getConfigGame());
                     do {
                         gameChallenger.startGame();
                     } while (gameChallenger.askIfReplayGame());
@@ -42,7 +39,6 @@ public class Game {
                 case "2":
                     GameDefender gameDefender = new GameDefender();
                     gameDefender.setScannerIn(ConfigUtil.getScannerIn());
-                    gameDefender.setConfigGame(ConfigGame.getConfigGame());
                     do {
                         gameDefender.startGame();
                     } while (gameDefender.askIfReplayGame());
@@ -51,7 +47,6 @@ public class Game {
                 case "3":
                     GameDuel gameDuel = new GameDuel();
                     gameDuel.setScannerIn(ConfigUtil.getScannerIn());
-                    gameDuel.setConfigGame(ConfigGame.getConfigGame());
                     do {
                         gameDuel.startGame();
                     }
@@ -75,7 +70,7 @@ public class Game {
     private void printChoiceModeOfGame() {
         System.out.println("Choisir un mode de jeu:");
         System.out.println(GameChoiceEnum.CHALLENGER.getChoice() + " - " + GameChoiceEnum.CHALLENGER.getDescription());
-        System.out.println(GameChoiceEnum.DEFENSEUR.getChoice() + " - " + GameChoiceEnum.DEFENSEUR.getDescription());
+        System.out.println(GameChoiceEnum.DEFENDER.getChoice() + " - " + GameChoiceEnum.DEFENDER.getDescription());
         System.out.println(GameChoiceEnum.DUEL.getChoice() + " - " + GameChoiceEnum.DUEL.getDescription());
         System.out.println(GameChoiceEnum.GAME_LEAVE.getChoice() + " - " + GameChoiceEnum.GAME_LEAVE.getDescription());
     }

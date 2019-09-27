@@ -11,7 +11,7 @@ public class GameDefender extends GameMode {
     @Override
     public void startGame() {
         setNumberOfTest(0);
-        System.out.println("mode: " + GameChoiceEnum.DEFENSEUR.getDescription() + " choisi");
+        System.out.println("mode: " + GameChoiceEnum.DEFENDER.getDescription() + " choisi");
         setSecretNumberArray(getSecretNumberArrayFromGamer());
         AIMemory aiMemory = new AIMemory(getConfigGame().getNumbersLength());
         String resultComparison = null;
@@ -59,7 +59,7 @@ public class GameDefender extends GameMode {
         System.out.print("Entrer le nombre secret: ");
         while (getScannerIn().hasNext()) {
             String secretNumber = getScannerIn().nextLine().trim();
-            if (secretNumber.length() != getConfigGame().getNumbersLength() || ConfigUtil.getIntegerFromString(secretNumber, "this is not a number") == null) {
+            if (secretNumber.length() != getConfigGame().getNumbersLength() || ConfigUtil.getIntegerFromString(secretNumber) == null) {
                 System.out.println("Erreur, le nombre doit être de " + getConfigGame().getNumbersLength() + " chiffres, veuillez réessayer.");
                 continue;
             }

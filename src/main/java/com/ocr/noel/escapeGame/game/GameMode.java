@@ -15,6 +15,7 @@ public abstract class GameMode {
      * Constructor of game
      */
     public GameMode() {
+        configGame = ConfigGame.getInstance();
     }
 
     /**
@@ -47,7 +48,7 @@ public abstract class GameMode {
         System.out.print("Entrer le nombre à " + secretNumberArray.length + " chiffres: ");
         while (getScannerIn().hasNext()) {
             String intString = getScannerIn().nextLine().trim();
-            Integer consoleEntry = ConfigUtil.getIntegerFromString(intString, "Error");
+            Integer consoleEntry = ConfigUtil.getIntegerFromString(intString);
             if (consoleEntry != null && consoleEntry >= 0) {
                 if (intString.length() != getSecretNumberArray().length) {
                     System.out.println("Votre nombre est de longueur incorrecte, il devrait être composer de " + getSecretNumberArray().length + " chiffres, veuillez recommencer");

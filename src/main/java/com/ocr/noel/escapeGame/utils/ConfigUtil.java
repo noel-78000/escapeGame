@@ -1,15 +1,8 @@
 package com.ocr.noel.escapeGame.utils;
 
-import com.ocr.noel.escapeGame.configs.ConfigGame;
-import com.ocr.noel.escapeGame.enums.ConfigGameEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class ConfigUtil {
@@ -18,48 +11,17 @@ public class ConfigUtil {
     private static Scanner scannerIn = new Scanner(System.in);
 
     /**
-     * This method get configuration from config.properties
-     *
-     * @param newConfigGame the new config of game to update
-     * @return the newConfigGame configured
-     */
-    public static ConfigGame setUpConfigGameFromPropertiesFile(ConfigGame newConfigGame) {
-        ResourceBundle config = ResourceBundle.getBundle(ConfigGameEnum.PROPERTIES_FILE_NAME.getName());
-        try {
-            ResourceBundle externalConfigProps = new PropertyResourceBundle(Files.newInputStream(Paths.get(ConfigGameEnum.PROPERTIES_FILE_NAME.getName() + ".properties")));
-            config = externalConfigProps;
-            log.info("External config.properties file found, it will be used");
-        } catch (IOException e) {
-            log.debug("No external existing " + ConfigGameEnum.PROPERTIES_FILE_NAME.getName() + ".properties file, the default config.properties will be used");
-        }
-        Integer nberTestMax = getIntegerFromString(config.getString(ConfigGameEnum.NBRE_ESSAIS_MAX.getName()),
-                "Reading file " + ConfigGameEnum.PROPERTIES_FILE_NAME.getName() + ".properties, parameter NBRE_ESSAIS_MAX is not found");
-        if (nberTestMax != null) {
-            newConfigGame.setNbTestMax(nberTestMax);
-        }
-        boolean devMode = Boolean.parseBoolean(config.getString(ConfigGameEnum.MODE_DEVELOPPEUR.getName()));
-        newConfigGame.setDevMode(devMode);
-        Integer numberLength = getIntegerFromString(config.getString(ConfigGameEnum.NBRE_CHIFFRES.getName()),
-        "Reading file " + ConfigGameEnum.PROPERTIES_FILE_NAME.getName() + ".properties, parameter NBRE_CHIFFRES is not found. the default is 4");
-        if (numberLength != null) {
-            newConfigGame.setNumbersLength(numberLength);
-        }
-        return newConfigGame;
-    }
-
-    /**
      * Convert a String to Integer if is possible otherwise return null
      *
      * @param intString String to convert in Integer
-     * @param logErrorMessage message to log if an error occurred
      * @return the Integer into the String or null if it is not an Integer
      */
-    public static Integer getIntegerFromString(String intString, String logErrorMessage) {
+    public static Integer getIntegerFromString(String intString) {
         Integer repInt = null;
         try {
             repInt = Integer.valueOf(intString);
         } catch (NumberFormatException e) {
-            log.error(logErrorMessage);
+            log.error("Error to convert a String to an integer");
         }
         return repInt;
     }

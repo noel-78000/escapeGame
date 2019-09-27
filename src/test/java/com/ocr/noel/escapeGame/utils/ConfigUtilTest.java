@@ -10,14 +10,14 @@ class ConfigUtilTest {
 
     @Test
     void givenIntegerStringWhenCallGetIntegerFromStringThenGetTheGoodInteger() {
-        Integer testInteger = ConfigUtil.getIntegerFromString("1234", "Test good Integer");
+        Integer testInteger = ConfigUtil.getIntegerFromString("1234");
         assertEquals(1234, testInteger);
-        testInteger = ConfigUtil.getIntegerFromString("bad Integer", "From JUnitTest bad Integer");
+        testInteger = ConfigUtil.getIntegerFromString("bad Integer");
         assertEquals(null, testInteger);
     }
 
     @Test
-    void givenNothingWhenGetSannerInThenGetSanner() {
+    void givenNothingWhenGetScannerInThenGetSanner() {
         Scanner scanner = ConfigUtil.getScannerIn();
         assertEquals(Scanner.class, scanner.getClass());
     }
