@@ -4,18 +4,11 @@ This application can be run by main method in Main class
 
 ## How to compile with maven
 
-* __install maven on your system__
+* __install maven on your system__<br />
+  You could find help here: https://maven.apache.org/install.html
 
-__Help for linux here:__
-
-First: install java<br />
-After install maven as below:<br />
-  wget http://mirrors.estointernet.in/apache/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz<br />
-  tar -xzf  apache-maven-3.6.2-bin.tar.gz<br />
-  sudo mkdir /opt/maven<br />
-  sudo mv apache-maven-3.6.2 /opt/maven<br />
-  add this env variable: M2_HOME="/opt/maven/apache-maven-3.6.2"<br />
+* __Compile:__
+  mvn clean install dependency:copy-dependencies -DoutputDirectory=target/lib -Dmaven.test.skip=true -PuseExternalConfigFiles<br />
 
 * __run the application:__
-  compile with: mvn clean install dependency:copy-dependencies -DoutputDirectory=target/lib<br />
-  java -jar target/escapeGame-1.0-SNAPSHOT.jar
+  java -cp conf:lib:./target/escapeGame-1.0-SNAPSHOT.jar com.ocr.noel.escapeGame.Main
