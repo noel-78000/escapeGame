@@ -16,6 +16,7 @@ public abstract class GameMode {
      */
     public GameMode() {
         configGame = ConfigGame.getInstance();
+        scannerIn = ConfigUtil.getScannerIn();
     }
 
     /**

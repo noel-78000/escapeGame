@@ -30,7 +30,6 @@ public class Game {
             switch (line) {
                 case "1":
                     GameChallenger gameChallenger = new GameChallenger();
-                    gameChallenger.setScannerIn(ConfigUtil.getScannerIn());
                     do {
                         gameChallenger.startGame();
                     } while (gameChallenger.askIfReplayGame());
@@ -38,7 +37,6 @@ public class Game {
 
                 case "2":
                     GameDefender gameDefender = new GameDefender();
-                    gameDefender.setScannerIn(ConfigUtil.getScannerIn());
                     do {
                         gameDefender.startGame();
                     } while (gameDefender.askIfReplayGame());
@@ -46,7 +44,6 @@ public class Game {
 
                 case "3":
                     GameDuel gameDuel = new GameDuel();
-                    gameDuel.setScannerIn(ConfigUtil.getScannerIn());
                     do {
                         gameDuel.startGame();
                     }
