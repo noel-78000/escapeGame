@@ -20,7 +20,6 @@
                             <exclude>config.properties</exclude>
                             <exclude>log4j2.xml</exclude>
                         </excludes>
-                        <filtering>false</filtering>
                     </resource>
                 </resources>
             </build>
