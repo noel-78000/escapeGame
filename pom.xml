@@ -11,14 +11,14 @@
 
     <profiles>
         <profile>
-            <id>useExternalConfigFiles</id>
+            <id>prod</id>
             <build>
                 <resources>
                     <resource>
                         <directory>src/main/resources</directory>
                         <excludes>
                             <exclude>config.properties</exclude>
-                            <exclude>log4j2.xml</exclude>
+                            <exclude>log4j2.properties</exclude>
                         </excludes>
                     </resource>
                 </resources>

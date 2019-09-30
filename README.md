@@ -8,7 +8,7 @@ This application can be run by main method in Main class
   You could find help here: https://maven.apache.org/install.html
 
 * __compile:__
-  mvn clean install dependency:copy-dependencies -DoutputDirectory=target/lib -Dmaven.test.skip=true -PuseExternalConfigFiles<br />
+  mvn clean install dependency:copy-dependencies -DoutputDirectory=target/lib -Dmaven.test.skip=true -Pprod<br />
 
 * __run the application:__
-  java -cp conf:lib:./target/escapeGame-1.0-SNAPSHOT.jar com.ocr.noel.escapeGame.Main
+  java -cp conf:./target/escapeGame-1.0-SNAPSHOT.jar com.ocr.noel.escapeGame.Main
