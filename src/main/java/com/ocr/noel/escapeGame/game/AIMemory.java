@@ -28,7 +28,7 @@ public class AIMemory {
     /**
      * In this method AI try to find the good number and return it
      *
-     * @param lastResult the last result of its test for example "+==-" or null if any
+     * @param lastResult the last result of its test for example "+==-" or null if any when the game start
      * @return the new array number found
      */
     public int[] getNewNumber(String lastResult) {

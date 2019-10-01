@@ -16,7 +16,7 @@ public class GameChallenger extends GameMode {
     public void startGame() {
         log.info("starting game");
         setNumberOfTest(0);
-        System.out.println("mode: " + GameChoiceEnum.CHALLENGER.getDescription() + " choisi");
+        System.out.println(String.format("mode: %s choisi", GameChoiceEnum.CHALLENGER.getDescription()));
         if (getSecretNumberArray() == null) {
             setSecretNumberArray(ConfigUtil.generateRandomIntegerArray(ConfigGame.getInstance().getNumbersLength()));
         }

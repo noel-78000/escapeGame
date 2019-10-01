@@ -8,7 +8,8 @@ public class ConfigGame {
     private static ConfigGame instance = null;
 
     /**
-     * This constructor is not accessible excepted in this class
+     * This constructor is not accessible excepted in this class because this is a singleton<br/>
+     * config file will be read only once
      */
     private ConfigGame() {
         ResourceBundle resourceBundle = ResourceBundle.getBundle("config");
@@ -19,7 +20,8 @@ public class ConfigGame {
 
     /**
      * get config of the game<br/>
-     * config file will be read only once
+     * the return instance will be construct only once because this is a singleton
+     *
      * @return the config game
      */
     public static ConfigGame getInstance() {

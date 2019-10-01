@@ -11,7 +11,7 @@ public class ConfigUtil {
     private static Scanner scannerIn = new Scanner(System.in);
 
     /**
-     * Convert a String to Integer if is possible otherwise return null
+     * Convert a String to Integer if is possible, otherwise return null
      *
      * @param intString String to convert in Integer
      * @return the Integer into the String or null if it is not an Integer
@@ -36,9 +36,9 @@ public class ConfigUtil {
     }
 
     /**
-     * This method create a secret number array
+     * This method create a random secret number array
      *
-     * @param length the length of the number to discover
+     * @param length the length of the secret number to discover
      * @return the secret number as a int[]
      */
     public static int[] generateRandomIntegerArray(int length) {

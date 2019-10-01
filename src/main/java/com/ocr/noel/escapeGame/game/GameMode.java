@@ -17,6 +17,11 @@ public abstract class GameMode {
      */
     public abstract void startGame();
 
+    /**
+     * This method ask to the gamer if he want to replay the same game or not
+     *
+     * @return true if the game will be replay false otherwise
+     */
     protected boolean askIfReplayGame() {
         System.out.println("Rejouer la partie? (O/N)");
         while (ConfigUtil.getScannerIn().hasNext()) {
@@ -34,7 +39,7 @@ public abstract class GameMode {
     }
 
     /**
-     * This method ask a new number and test it if match
+     * This method ask a new number and test it if match with the secret number
      *
      * @return true if the number match, otherwise false
      */
@@ -71,20 +76,20 @@ public abstract class GameMode {
      * @return the result of the the comparison between the two arguments
      */
     protected String getStringCompare(String intString, int[] secretNumberArray) {
-        String compareResult = "";
+        StringBuffer compareResult = new StringBuffer();
         for (int i = 0; i < secretNumberArray.length; i++) {
             int val = Integer.parseInt(intString.substring(i, i + 1));
             if (val == secretNumberArray[i]) {
-                compareResult += "=";
+                compareResult.append("=");
                 continue;
             } else if (val > secretNumberArray[i]) {
-                compareResult += "-";
+                compareResult.append("-");
                 continue;
             } else {
-                compareResult += "+";
+                compareResult.append("+");
             }
         }
-        return compareResult;
+        return compareResult.toString();
     }
 
     public int getNumberOfTest() {

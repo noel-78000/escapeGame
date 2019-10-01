@@ -23,7 +23,7 @@ public class GameDefender extends GameMode {
         boolean computerWin = false;
         do {
             int[] newProposalNumber = aiMemory.getNewNumber(resultComparison);
-            System.out.print(String.format("L\'ordinateur propose: %d, entrer le résultat: ",  ConfigUtil.getIntFromIntArray(newProposalNumber)));
+            System.out.print(String.format("L\'ordinateur propose: %d, entrer le résultat: ", ConfigUtil.getIntFromIntArray(newProposalNumber)));
             setNumberOfTest(getNumberOfTest() + 1);
             resultComparison = getResultComparison();
             if (resultComparison.replace("=", "").length() == 0) {

@@ -20,7 +20,7 @@ public class Game {
     }
 
     /**
-     * Method to choice a mode of game or quit the game
+     * Method to choice a mode of game or quit the program
      */
     private void choiceGameMode() {
         printChoiceModeOfGame();
@@ -61,16 +61,19 @@ public class Game {
     }
 
     /**
-     * Print into the console the choices of games or choice to quit the program
+     * Print into the console the possible choices of games or the choice to quit the program
      */
     private void printChoiceModeOfGame() {
         System.out.println("Choisir un mode de jeu:");
-        System.out.println(GameChoiceEnum.CHALLENGER.getChoice() + " - " + GameChoiceEnum.CHALLENGER.getDescription());
-        System.out.println(GameChoiceEnum.DEFENDER.getChoice() + " - " + GameChoiceEnum.DEFENDER.getDescription());
-        System.out.println(GameChoiceEnum.DUEL.getChoice() + " - " + GameChoiceEnum.DUEL.getDescription());
-        System.out.println(GameChoiceEnum.GAME_LEAVE.getChoice() + " - " + GameChoiceEnum.GAME_LEAVE.getDescription());
+        System.out.println(String.format("%s - %s", GameChoiceEnum.CHALLENGER.getChoice(), GameChoiceEnum.CHALLENGER.getDescription()));
+        System.out.println(String.format("%s - %s", GameChoiceEnum.DEFENDER.getChoice(), GameChoiceEnum.DEFENDER.getDescription()));
+        System.out.println(String.format("%s - %s", GameChoiceEnum.DUEL.getChoice(), GameChoiceEnum.DUEL.getDescription()));
+        System.out.println(String.format("%s - %s", GameChoiceEnum.GAME_LEAVE.getChoice(), GameChoiceEnum.GAME_LEAVE.getDescription()));
     }
 
+    /**
+     * This method close the console scanner and finish the program
+     */
     private void stopGame() {
         System.out.println("Le jeu est terminé!");
         ConfigUtil.getScannerIn().close();
