@@ -42,6 +42,7 @@ public class ConfigUtil {
      * @return the secret number as a int[]
      */
     public static int[] generateRandomIntegerArray(int length) {
+        log.debug(String.format("Starting method generateRandomIntegerArray, with length = %d", length));
         int[] secretNumber = new int[length];
         for (int i = 0; i < secretNumber.length; i++) {
             String partOfRandomNumber = String.valueOf(Math.random());

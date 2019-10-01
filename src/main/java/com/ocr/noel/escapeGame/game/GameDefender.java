@@ -1,35 +1,41 @@
 package com.ocr.noel.escapeGame.game;
 
+import com.ocr.noel.escapeGame.configs.ConfigGame;
 import com.ocr.noel.escapeGame.enums.GameChoiceEnum;
 import com.ocr.noel.escapeGame.utils.ConfigUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class GameDefender extends GameMode {
+    private final static Logger log = LogManager.getLogger(GameDefender.class);
 
     public GameDefender() {
     }
 
     @Override
     public void startGame() {
+        log.info("starting game");
         setNumberOfTest(0);
-        System.out.println("mode: " + GameChoiceEnum.DEFENDER.getDescription() + " choisi");
+        System.out.println(String.format("mode: %s choisi", GameChoiceEnum.DEFENDER.getDescription()));
         setSecretNumberArray(getSecretNumberArrayFromGamer());
-        AIMemory aiMemory = new AIMemory(getConfigGame().getNumbersLength());
+        AIMemory aiMemory = new AIMemory(ConfigGame.getInstance().getNumbersLength());
         String resultComparison = null;
         boolean computerWin = false;
         do {
             int[] newProposalNumber = aiMemory.getNewNumber(resultComparison);
-            System.out.print("L\'ordinateur propose: " + ConfigUtil.getIntFromIntArray(newProposalNumber) + ", entrer le résultat: ");
+            System.out.print(String.format("L\'ordinateur propose: %d, entrer le résultat: ",  ConfigUtil.getIntFromIntArray(newProposalNumber)));
             setNumberOfTest(getNumberOfTest() + 1);
             resultComparison = getResultComparison();
             if (resultComparison.replace("=", "").length() == 0) {
                 computerWin = true;
             }
-        } while (!computerWin && getNumberOfTest() < getConfigGame().getNbTestMax());
+        } while (!computerWin && getNumberOfTest() < ConfigGame.getInstance().getNbTestMax());
         if (computerWin) {
             System.out.println("L\'ordinateur a gagné!");
         } else {
             System.out.println("L\'ordinateur a perdu!");
         }
+        log.info("end of this game");
     }
 
     /**
@@ -38,13 +44,13 @@ public class GameDefender extends GameMode {
      * @return the result comparison from the keyboard
      */
     private String getResultComparison() {
-        while (getScannerIn().hasNext()) {
-            String line = getScannerIn().nextLine().trim();
-            if (line.length() == getConfigGame().getNumbersLength() &&
+        while (ConfigUtil.getScannerIn().hasNext()) {
+            String line = ConfigUtil.getScannerIn().nextLine().trim();
+            if (line.length() == ConfigGame.getInstance().getNumbersLength() &&
                     line.replace("=", "").replace("+", "").replace("-", "").length() == 0) {
                 return line;
             } else {
-                System.out.println("Il y a une erreur dans la saisie. Veuillez saisir " + getConfigGame().getNumbersLength() + " de = ou + ou -");
+                System.out.println(String.format("Il y a une erreur dans la saisie. Veuillez saisir %d de = ou + ou -", ConfigGame.getInstance().getNumbersLength()));
             }
         }
         return null;
@@ -56,11 +62,11 @@ public class GameDefender extends GameMode {
      * @return the secret number as an array from keyboard or null if pb occurred
      */
     private int[] getSecretNumberArrayFromGamer() {
-        System.out.print("Entrer le nombre secret: ");
-        while (getScannerIn().hasNext()) {
-            String secretNumber = getScannerIn().nextLine().trim();
-            if (secretNumber.length() != getConfigGame().getNumbersLength() || ConfigUtil.getIntegerFromString(secretNumber) == null) {
-                System.out.println("Erreur, le nombre doit être de " + getConfigGame().getNumbersLength() + " chiffres, veuillez réessayer.");
+        System.out.print(String.format("Entrer le nombre secret de %d chiffres: ", ConfigGame.getInstance().getNumbersLength()));
+        while (ConfigUtil.getScannerIn().hasNext()) {
+            String secretNumber = ConfigUtil.getScannerIn().nextLine().trim();
+            if (secretNumber.length() != ConfigGame.getInstance().getNumbersLength() || ConfigUtil.getIntegerFromString(secretNumber) == null) {
+                System.out.println(String.format("Erreur, le nombre doit être de %d chiffres, veuillez réessayer.", ConfigGame.getInstance().getNumbersLength()));
                 continue;
             }
             return ConfigUtil.getIntArrayFromStringNumber(secretNumber);

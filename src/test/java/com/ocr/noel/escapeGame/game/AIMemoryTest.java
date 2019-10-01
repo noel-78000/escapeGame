@@ -2,12 +2,12 @@ package com.ocr.noel.escapeGame.game;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AIMemoryTest {
 
     @Test
-    void givenStringResultWhenGetNewNumberThenTtestNewNumber() {
+    void givenStringResultWhenGetNewNumberThenTestNewNumber() {
         AIMemory aiMemory = new AIMemory(4);
         int[] numberInitialTemp = aiMemory.getNewNumber("");
         for (int i = 0; i < numberInitialTemp.length; i++) {

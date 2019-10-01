@@ -1,22 +1,15 @@
 package com.ocr.noel.escapeGame.game;
 
-import com.ocr.noel.escapeGame.configs.ConfigGame;
 import com.ocr.noel.escapeGame.utils.ConfigUtil;
-
-import java.util.Scanner;
 
 public abstract class GameMode {
     private int numberOfTest = 0;
-    private Scanner scannerIn;
-    private ConfigGame configGame;
     private int[] secretNumberArray = null;
 
     /**
      * Constructor of game
      */
     public GameMode() {
-        configGame = ConfigGame.getInstance();
-        scannerIn = ConfigUtil.getScannerIn();
     }
 
     /**
@@ -26,15 +19,15 @@ public abstract class GameMode {
 
     protected boolean askIfReplayGame() {
         System.out.println("Rejouer la partie? (O/N)");
-        while (scannerIn.hasNext()) {
-            String line = scannerIn.nextLine().trim().toUpperCase();
+        while (ConfigUtil.getScannerIn().hasNext()) {
+            String line = ConfigUtil.getScannerIn().nextLine().trim().toUpperCase();
             switch (line) {
                 case "O":
                     return true;
                 case "N":
                     return false;
                 default:
-                    System.out.println("Votre entrée clavier est erroné, vous avec entré: " + line + ", veuillez réessayer.");
+                    System.out.println(String.format("Votre entrée clavier est erroné, vous avec entré: %s, veuillez réessayer.", line));
             }
         }
         return false;
@@ -46,25 +39,25 @@ public abstract class GameMode {
      * @return true if the number match, otherwise false
      */
     protected boolean isNewEntryOK() {
-        System.out.print("Entrer le nombre à " + secretNumberArray.length + " chiffres: ");
-        while (getScannerIn().hasNext()) {
-            String intString = getScannerIn().nextLine().trim();
+        System.out.print(String.format("Entrer le nombre à %d chiffres: ", secretNumberArray.length));
+        while (ConfigUtil.getScannerIn().hasNext()) {
+            String intString = ConfigUtil.getScannerIn().nextLine().trim();
             Integer consoleEntry = ConfigUtil.getIntegerFromString(intString);
             if (consoleEntry != null && consoleEntry >= 0) {
                 if (intString.length() != getSecretNumberArray().length) {
-                    System.out.println("Votre nombre est de longueur incorrecte, il devrait être composer de " + getSecretNumberArray().length + " chiffres, veuillez recommencer");
+                    System.out.println(String.format("Votre nombre est de longueur incorrecte, il devrait être composer de %d chiffres, veuillez recommencer.", getSecretNumberArray().length));
                     continue;
                 }
                 String compareResult = getStringCompare(intString, getSecretNumberArray());
                 this.numberOfTest++;
-                System.out.println("le resultat est : " + compareResult);
+                System.out.println(String.format("Le resultat est : %s", compareResult));
                 if (compareResult.replace("=", "").length() == 0) {
                     return true;
                 } else {
                     return false;
                 }
             } else {
-                System.out.println("Votre saisie est érroné, vous avez taper: " + intString);
+                System.out.println(String.format("Votre saisie est érroné, vous avez taper: %s", intString));
             }
         }
         return false;
@@ -100,22 +93,6 @@ public abstract class GameMode {
 
     public void setNumberOfTest(int numberOfTest) {
         this.numberOfTest = numberOfTest;
-    }
-
-    public Scanner getScannerIn() {
-        return scannerIn;
-    }
-
-    public void setScannerIn(Scanner scannerIn) {
-        this.scannerIn = scannerIn;
-    }
-
-    public ConfigGame getConfigGame() {
-        return configGame;
-    }
-
-    public void setConfigGame(ConfigGame configGame) {
-        this.configGame = configGame;
     }
 
     public int[] getSecretNumberArray() {

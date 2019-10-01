@@ -12,17 +12,17 @@ public class Game {
     }
 
     /**
-     * The method to start the game
+     * The method to start the game and make choice of games
      */
     public void startGame() {
         log.info("Game start");
-        choiceMode();
+        choiceGameMode();
     }
 
     /**
      * Method to choice a mode of game or quit the game
      */
-    private void choiceMode() {
+    private void choiceGameMode() {
         printChoiceModeOfGame();
         while (ConfigUtil.getScannerIn().hasNext()) {
             String line = ConfigUtil.getScannerIn().nextLine().trim().toLowerCase();
@@ -61,7 +61,7 @@ public class Game {
     }
 
     /**
-     * Print to the console the choices of game or quit choice
+     * Print into the console the choices of games or choice to quit the program
      */
     private void printChoiceModeOfGame() {
         System.out.println("Choisir un mode de jeu:");
@@ -74,7 +74,7 @@ public class Game {
     private void stopGame() {
         System.out.println("Le jeu est terminé!");
         ConfigUtil.getScannerIn().close();
-        log.info("end of the game.");
+        log.info("end of program.");
         System.exit(0);
     }
 }
