@@ -35,14 +35,11 @@ class ConfigUtilTest {
     @Test
     void givenIntArrayWhenGetIntegerFromIntArrayThenGetTheGoodNumber() {
         int[] intArray = new int[]{1, 2, 3, 4, 5, 6};
-        int res = ConfigUtil.getIntFromIntArray(intArray);
-        assertEquals(123456, res);
+        assertEquals("123456", ConfigUtil.getDisplayableIntFromIntArray(intArray));
         intArray = new int[]{8, 2, 6, 4};
-        res = ConfigUtil.getIntFromIntArray(intArray);
-        assertEquals(8264, res);
+        assertEquals("8264", ConfigUtil.getDisplayableIntFromIntArray(intArray));
         intArray = new int[]{9, 3, 5, 4, 8, 7};
-        res = ConfigUtil.getIntFromIntArray(intArray);
-        assertEquals(935487, res);
+        assertEquals("935487", ConfigUtil.getDisplayableIntFromIntArray(intArray));
     }
 
     @Test

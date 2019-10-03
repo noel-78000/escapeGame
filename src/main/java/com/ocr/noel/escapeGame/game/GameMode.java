@@ -2,9 +2,18 @@ package com.ocr.noel.escapeGame.game;
 
 import com.ocr.noel.escapeGame.utils.ConfigUtil;
 
+/**
+ * Common abstract class for the different game mode
+ */
 public abstract class GameMode {
+    //Number of test already done by the computer and the gamer
     private int numberOfTest = 0;
-    private int[] secretNumberArray = null;
+
+    //The secret number chosen by the gamer
+    private int[] secretNumberArrayFromGamer = null;
+
+    //The secret number given by the computer
+    private int[] secretNumberArrayFromComputer = null;
 
     /**
      * Constructor of game
@@ -32,7 +41,7 @@ public abstract class GameMode {
                 case "N":
                     return false;
                 default:
-                    System.out.println(String.format("Votre entrée clavier est erroné, vous avec entré: %s, veuillez réessayer.", line));
+                    System.out.println(String.format("Votre entrée clavier est erronée, vous avez entré: %s, veuillez réessayer.", line));
             }
         }
         return false;
@@ -43,26 +52,26 @@ public abstract class GameMode {
      *
      * @return true if the number match, otherwise false
      */
-    protected boolean isNewEntryOK() {
-        System.out.print(String.format("Entrer le nombre à %d chiffres: ", secretNumberArray.length));
+    protected boolean isNewEntryFromGamerOK() {
+        System.out.print(String.format("Entrer le nombre à %d chiffres: ", getSecretNumberArrayFromComputer().length));
         while (ConfigUtil.getScannerIn().hasNext()) {
             String intString = ConfigUtil.getScannerIn().nextLine().trim();
             Integer consoleEntry = ConfigUtil.getIntegerFromString(intString);
             if (consoleEntry != null && consoleEntry >= 0) {
-                if (intString.length() != getSecretNumberArray().length) {
-                    System.out.println(String.format("Votre nombre est de longueur incorrecte, il devrait être composer de %d chiffres, veuillez recommencer.", getSecretNumberArray().length));
+                if (intString.length() != getSecretNumberArrayFromComputer().length) {
+                    System.out.println(String.format("Votre nombre est de longueur incorrecte, il devrait être composer de %d chiffres, veuillez recommencer.", getSecretNumberArrayFromComputer().length));
                     continue;
                 }
-                String compareResult = getStringCompare(intString, getSecretNumberArray());
+                String compareResult = getStringCompare(intString, getSecretNumberArrayFromComputer());
                 this.numberOfTest++;
-                System.out.println(String.format("Le resultat est : %s", compareResult));
+                System.out.println(String.format("Coups numéro %d, le resultat est : %s", getNumberOfTest(), compareResult));
                 if (compareResult.replace("=", "").length() == 0) {
                     return true;
                 } else {
                     return false;
                 }
             } else {
-                System.out.println(String.format("Votre saisie est érroné, vous avez taper: %s", intString));
+                System.out.println(String.format("Votre saisie est érronée, vous avez tapé: %s", intString));
             }
         }
         return false;
@@ -100,11 +109,19 @@ public abstract class GameMode {
         this.numberOfTest = numberOfTest;
     }
 
-    public int[] getSecretNumberArray() {
-        return secretNumberArray;
+    public int[] getSecretNumberArrayFromGamer() {
+        return secretNumberArrayFromGamer;
     }
 
-    public void setSecretNumberArray(int[] secretNumberArray) {
-        this.secretNumberArray = secretNumberArray;
+    public void setSecretNumberArrayFromGamer(int[] secretNumberArray) {
+        this.secretNumberArrayFromGamer = secretNumberArray;
+    }
+
+    public int[] getSecretNumberArrayFromComputer() {
+        return secretNumberArrayFromComputer;
+    }
+
+    public void setSecretNumberArrayFromComputer(int[] secretNumberArrayFromComputer) {
+        this.secretNumberArrayFromComputer = secretNumberArrayFromComputer;
     }
 }

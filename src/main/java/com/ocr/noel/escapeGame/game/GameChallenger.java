@@ -6,6 +6,10 @@ import com.ocr.noel.escapeGame.utils.ConfigUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Implementation of challenger mode,
+ * the computer chose a number and the gamer have to find it
+ */
 public class GameChallenger extends GameMode {
     private final static Logger log = LogManager.getLogger(GameChallenger.class);
 
@@ -17,23 +21,23 @@ public class GameChallenger extends GameMode {
         log.info("starting game");
         setNumberOfTest(0);
         System.out.println(String.format("mode: %s choisi", GameChoiceEnum.CHALLENGER.getDescription()));
-        if (getSecretNumberArray() == null) {
-            setSecretNumberArray(ConfigUtil.generateRandomIntegerArray(ConfigGame.getInstance().getNumbersLength()));
+        if (getSecretNumberArrayFromComputer() == null) {
+            setSecretNumberArrayFromComputer(ConfigUtil.generateRandomIntegerArray(ConfigGame.getInstance().getNumbersLength()));
         }
         if (ConfigGame.getInstance().isDevMode()) {
-            System.out.println(String.format("Mode dev -> le nombre secret est : %d", ConfigUtil.getIntFromIntArray(getSecretNumberArray())));
+            System.out.println(String.format("Mode dev -> le nombre secret est : %s", ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
         }
         while (getNumberOfTest() < ConfigGame.getInstance().getNbTestMax()) {
-            if (isNewEntryOK()) {
-                System.out.println("Vous avez gagné!");
-                setSecretNumberArray(null);
+            if (isNewEntryFromGamerOK()) {
+                System.out.println(String.format("Vous avez gagné en %d coups!", getNumberOfTest()));
+                setSecretNumberArrayFromComputer(null);
                 log.info("end of this game");
                 return;
             }
         }
-        System.out.println(String.format("Le nombre secret était: %d", ConfigUtil.getIntFromIntArray(getSecretNumberArray())));
+        System.out.println(String.format("Le nombre secret était: %s", ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
         System.out.println("Vous avez perdu!");
-        setSecretNumberArray(null);
+        setSecretNumberArrayFromComputer(null);
         log.info("end of this game");
     }
 }

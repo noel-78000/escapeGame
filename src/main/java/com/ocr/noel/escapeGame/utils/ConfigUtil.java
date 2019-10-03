@@ -1,5 +1,6 @@
 package com.ocr.noel.escapeGame.utils;
 
+import com.ocr.noel.escapeGame.configs.ConfigGame;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -53,20 +54,25 @@ public class ConfigUtil {
     }
 
     /**
-     * This method get an int from this representative int array
+     * This method get an int displayable on X characters from this representative int array
      *
      * @param secretNumberTab the int array to transform
-     * @return an int from the parameter or -1 if error occurred
+     * @return an displayable int from the parameter or null if error occurred
      */
-    public static int getIntFromIntArray(int[] secretNumberTab) {
+    public static String getDisplayableIntFromIntArray(int[] secretNumberTab) {
         if (secretNumberTab == null || secretNumberTab.length == 0) {
-            return -1;
+            return null;
         }
         int res = 0;
         for (int i = 0; i < secretNumberTab.length; i++) {
             res += secretNumberTab[i] * Math.pow(10, secretNumberTab.length - 1 - i);
         }
-        return res;
+        StringBuffer sb = new StringBuffer(String.valueOf(res));
+        //try to get a String on ConfigGame.getInstance().getNumbersLength() character
+        while (ConfigGame.getInstance().getNumbersLength() > sb.length()) {
+            sb.insert(0, "0");
+        }
+        return sb.toString();
     }
 
     /**

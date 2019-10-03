@@ -6,6 +6,11 @@ import com.ocr.noel.escapeGame.utils.ConfigUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Implementation of duel mode,
+ * the computer and the gamer choice a secret number.
+ * So, the first who found the number of the other won
+ */
 public class GameDuel extends GameMode {
     private final static Logger log = LogManager.getLogger(GameDuel.class);
 
@@ -18,21 +23,21 @@ public class GameDuel extends GameMode {
         setNumberOfTest(0);
         AIMemory aiMemory = new AIMemory(ConfigGame.getInstance().getNumbersLength());
         System.out.println(String.format("mode: %s choisi", GameChoiceEnum.DUEL.getDescription()));
-        setSecretNumberArray(ConfigUtil.generateRandomIntegerArray(ConfigGame.getInstance().getNumbersLength()));
+        setSecretNumberArrayFromComputer(ConfigUtil.generateRandomIntegerArray(ConfigGame.getInstance().getNumbersLength()));
         if (ConfigGame.getInstance().isDevMode()) {
-            System.out.println(String.format("Mode dev -> le nombre secret est : %d", ConfigUtil.getIntFromIntArray(getSecretNumberArray())));
+            System.out.println(String.format("Mode dev -> le nombre secret est : %s", ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
         }
         boolean gameOver = false;
         String lastResultForAI = null;
         while (!gameOver) {
-            if (isNewEntryOK()) {
+            if (isNewEntryFromGamerOK()) {
                 System.out.println("Vous avez gagné!");
                 gameOver = true;
             }
             if (!gameOver) {
                 int[] numberAI = aiMemory.getNewNumber(lastResultForAI);
-                String resNumberAI = Integer.toString(ConfigUtil.getIntFromIntArray(numberAI));
-                lastResultForAI = getStringCompare(resNumberAI, getSecretNumberArray());
+                String resNumberAI = ConfigUtil.getDisplayableIntFromIntArray(numberAI);
+                lastResultForAI = getStringCompare(resNumberAI, getSecretNumberArrayFromComputer());
                 System.out.println(String.format("L\'ordinateur a donné: %s, le resultat est: %s", resNumberAI, lastResultForAI));
                 if (lastResultForAI.replace("=", "").length() == 0) {
                     System.out.println("L\'ordinateur a gagné!");
