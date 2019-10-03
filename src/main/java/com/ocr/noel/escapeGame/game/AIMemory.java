@@ -38,10 +38,16 @@ public class AIMemory {
         for (int i = 0; i < lastResult.length(); i++) {
             switch (lastResult.substring(i, i + 1)) {
                 case "+":
+                    if (numberMax[i] <= numberLastProposal[i] + 1) {
+                        numberMax[i] = numberMax[i] + 1;//in case where the gamer give a wrong result before
+                    }
                     numberMin[i] = numberLastProposal[i];
                     numberLastProposal[i] = (numberMax[i] + numberLastProposal[i]) / 2;
                     break;
                 case "-":
+                    if (numberMin[i] >= numberLastProposal[i] - 1) {
+                        numberMin[i] = numberMin[i] - 1;//in case where the gamer give a wrong result before
+                    }
                     numberMax[i] = numberLastProposal[i];
                     numberLastProposal[i] = (numberMin[i] + numberLastProposal[i]) / 2;
             }
