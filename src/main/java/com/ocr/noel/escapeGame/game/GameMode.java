@@ -120,6 +120,25 @@ public abstract class GameMode {
         return null;
     }
 
+    /**
+     * this method get result from the input console and
+     * if the result is rightly written with the good String symbol and length as "=+-="
+     *
+     * @return the result comparison from the keyboard
+     */
+    protected String getResultComparison() {
+        while (ConfigUtil.getScannerIn().hasNext()) {
+            String line = ConfigUtil.getScannerIn().nextLine().trim();
+            if (line.length() == ConfigGame.getInstance().getNumbersLength() &&
+                    line.replace("=", "").replace("+", "").replace("-", "").length() == 0) {
+                return line;
+            } else {
+                System.out.println(String.format("Il y a une erreur dans la saisie. Veuillez saisir %d de = ou + ou -", ConfigGame.getInstance().getNumbersLength()));
+            }
+        }
+        return null;
+    }
+
     public int getNumberOfTest() {
         return numberOfTest;
     }

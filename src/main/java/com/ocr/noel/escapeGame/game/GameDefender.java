@@ -43,22 +43,4 @@ public class GameDefender extends GameMode {
         log.info("end of this game");
         setSecretNumberArrayFromGamer(null);
     }
-
-    /**
-     * this method get a correct result with the good length as "=+-="
-     *
-     * @return the result comparison from the keyboard
-     */
-    private String getResultComparison() {
-        while (ConfigUtil.getScannerIn().hasNext()) {
-            String line = ConfigUtil.getScannerIn().nextLine().trim();
-            if (line.length() == ConfigGame.getInstance().getNumbersLength() &&
-                    line.replace("=", "").replace("+", "").replace("-", "").length() == 0) {
-                return line;
-            } else {
-                System.out.println(String.format("Il y a une erreur dans la saisie. Veuillez saisir %d de = ou + ou -", ConfigGame.getInstance().getNumbersLength()));
-            }
-        }
-        return null;
-    }
 }
