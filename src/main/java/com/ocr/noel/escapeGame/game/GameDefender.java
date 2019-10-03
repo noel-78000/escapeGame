@@ -31,6 +31,7 @@ public class GameDefender extends GameMode {
             System.out.println(String.format("%sEssai numéro %d,%sl\'ordinateur propose: %s", System.lineSeparator(), getNumberOfTest(), System.lineSeparator(), ConfigUtil.getDisplayableIntFromIntArray(newProposalNumber)));
             System.out.print("Entrer le résultat: ");
             resultComparison = getResultComparisonFromKeyboardEntries();
+            log.debug("The proposed AI number is {}, the result is {}", ConfigUtil.getDisplayableIntFromIntArray(newProposalNumber), resultComparison);
             if (resultComparison.replace("=", "").length() == 0) {
                 computerWin = true;
             }

@@ -43,13 +43,13 @@ public class ConfigUtil {
      * @return the secret number as a int[]
      */
     public static int[] generateRandomIntegerArray(int length) {
-        log.debug(String.format("Starting method generateRandomIntegerArray, with length = %d", length));
         int[] secretNumber = new int[length];
         for (int i = 0; i < secretNumber.length; i++) {
             String partOfRandomNumber = String.valueOf(Math.random());
             String aNumber = partOfRandomNumber.substring(partOfRandomNumber.length() - 1);
             secretNumber[i] = Integer.parseInt(aNumber);
         }
+        log.debug("Starting method generateRandomIntegerArray, this Integer = {}", getDisplayableIntFromIntArray(secretNumber));
         return secretNumber;
     }
 

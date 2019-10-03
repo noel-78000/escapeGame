@@ -38,11 +38,11 @@ public class GameDuel extends GameMode {
             if (!gameOver) {
                 int[] numberAI = aiMemory.getNewNumber(lastResultForAI);
                 String resNumberAI = ConfigUtil.getDisplayableIntFromIntArray(numberAI);
-                //lastResultForAI = getStringCompare(resNumberAI, getSecretNumberArrayFromGamer());
                 System.out.println(String.format("L\'ordinateur a donné: %s", resNumberAI));
                 System.out.print("Le résultat est: ");
                 lastResultForAI = getResultComparisonFromKeyboardEntries();
                 System.out.println(lastResultForAI);
+                log.debug("The AI give {}, the result is {}", resNumberAI, lastResultForAI);
                 if (lastResultForAI.replace("=", "").length() == 0) {
                     System.out.println(String.format("%sL\'ordinateur a gagné!", System.lineSeparator()));
                     gameOver = true;
