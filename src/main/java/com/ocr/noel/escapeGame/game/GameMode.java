@@ -1,5 +1,6 @@
 package com.ocr.noel.escapeGame.game;
 
+import com.ocr.noel.escapeGame.configs.ConfigGame;
 import com.ocr.noel.escapeGame.utils.ConfigUtil;
 
 /**
@@ -99,6 +100,24 @@ public abstract class GameMode {
             }
         }
         return compareResult.toString();
+    }
+
+    /**
+     * This method ask a new available secret number of the gamer
+     *
+     * @return the secret number as an array from keyboard or null if pb occurred
+     */
+    protected int[] getConsoleInputSecretNumberArrayFromGamer() {
+        System.out.print(String.format("Entrer le nombre secret de %d chiffres: ", ConfigGame.getInstance().getNumbersLength()));
+        while (ConfigUtil.getScannerIn().hasNext()) {
+            String secretNumber = ConfigUtil.getScannerIn().nextLine().trim();
+            if (secretNumber.length() != ConfigGame.getInstance().getNumbersLength() || ConfigUtil.getIntegerFromString(secretNumber) == null) {
+                System.out.println(String.format("Erreur, le nombre doit être de %d chiffres, veuillez réessayer.", ConfigGame.getInstance().getNumbersLength()));
+                continue;
+            }
+            return ConfigUtil.getIntArrayFromStringNumber(secretNumber);
+        }
+        return null;
     }
 
     public int getNumberOfTest() {
