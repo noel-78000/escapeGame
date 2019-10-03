@@ -38,6 +38,7 @@ public abstract class GameMode {
             String line = ConfigUtil.getScannerIn().nextLine().trim().toUpperCase();
             switch (line) {
                 case "O":
+                    System.out.println("------------------------------------");
                     return true;
                 case "N":
                     return false;
@@ -54,6 +55,8 @@ public abstract class GameMode {
      * @return true if the number match, otherwise false
      */
     protected boolean isNewEntryFromGamerOK() {
+        this.numberOfTest++;
+        System.out.println(String.format("%sEssai numéro %d,", System.lineSeparator(), getNumberOfTest()));
         System.out.print(String.format("Entrer le nombre à %d chiffres: ", getSecretNumberArrayFromComputer().length));
         while (ConfigUtil.getScannerIn().hasNext()) {
             String intString = ConfigUtil.getScannerIn().nextLine().trim();
@@ -64,15 +67,16 @@ public abstract class GameMode {
                     continue;
                 }
                 String compareResult = getStringCompare(intString, getSecretNumberArrayFromComputer());
-                this.numberOfTest++;
-                System.out.println(String.format("Coups numéro %d, le resultat est : %s", getNumberOfTest(), compareResult));
+                //this.numberOfTest++;
+                //System.out.println(String.format("Essai numéro %d, %sle resultat est : %s", getNumberOfTest(), System.lineSeparator(), compareResult));
+                System.out.println(String.format("le resultat est : %s", compareResult));
                 if (compareResult.replace("=", "").length() == 0) {
                     return true;
                 } else {
                     return false;
                 }
             } else {
-                System.out.println(String.format("Votre saisie est érronée, vous avez tapé: %s", intString));
+                System.out.println(String.format("Votre saisie est érronée, vous avez tapé: %s, veuillez recommencer.", intString));
             }
         }
         return false;
@@ -126,7 +130,7 @@ public abstract class GameMode {
      *
      * @return the result comparison from the keyboard
      */
-    protected String getResultComparison() {
+    protected String getResultComparisonFromKeyboardEntries() {
         while (ConfigUtil.getScannerIn().hasNext()) {
             String line = ConfigUtil.getScannerIn().nextLine().trim();
             if (line.length() == ConfigGame.getInstance().getNumbersLength() &&

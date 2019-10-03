@@ -28,17 +28,17 @@ public class GameDefender extends GameMode {
         do {
             int[] newProposalNumber = aiMemory.getNewNumber(resultComparison);
             setNumberOfTest(getNumberOfTest() + 1);
-            System.out.println(String.format("Coups numéro %d, l\'ordinateur propose: %s", getNumberOfTest(), ConfigUtil.getDisplayableIntFromIntArray(newProposalNumber)));
+            System.out.println(String.format("%sEssai numéro %d,%sl\'ordinateur propose: %s", System.lineSeparator(), getNumberOfTest(), System.lineSeparator(), ConfigUtil.getDisplayableIntFromIntArray(newProposalNumber)));
             System.out.print("Entrer le résultat: ");
-            resultComparison = getResultComparison();
+            resultComparison = getResultComparisonFromKeyboardEntries();
             if (resultComparison.replace("=", "").length() == 0) {
                 computerWin = true;
             }
         } while (!computerWin && getNumberOfTest() < ConfigGame.getInstance().getNbTestMax());
         if (computerWin) {
-            System.out.println(String.format("L\'ordinateur a gagné en %d coups!", getNumberOfTest()));
+            System.out.println(String.format("%sL\'ordinateur a gagné en %d coups!", System.lineSeparator(), getNumberOfTest()));
         } else {
-            System.out.println("L\'ordinateur a perdu!");
+            System.out.println(String.format("%sL\'ordinateur a perdu!", System.lineSeparator()));
         }
         log.info("end of this game");
         setSecretNumberArrayFromGamer(null);

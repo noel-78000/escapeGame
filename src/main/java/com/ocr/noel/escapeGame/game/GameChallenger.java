@@ -25,17 +25,17 @@ public class GameChallenger extends GameMode {
             setSecretNumberArrayFromComputer(ConfigUtil.generateRandomIntegerArray(ConfigGame.getInstance().getNumbersLength()));
         }
         if (ConfigGame.getInstance().isDevMode()) {
-            System.out.println(String.format("Mode dev -> le nombre secret est : %s", ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
+            System.out.println(String.format("Mode dev -> le nombre secret de l\'ordinateur est : %s", ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
         }
         while (getNumberOfTest() < ConfigGame.getInstance().getNbTestMax()) {
             if (isNewEntryFromGamerOK()) {
-                System.out.println(String.format("Vous avez gagné en %d coups!", getNumberOfTest()));
+                System.out.println(String.format("%sVous avez gagné en %d coups!", System.lineSeparator(), getNumberOfTest()));
                 setSecretNumberArrayFromComputer(null);
                 log.info("end of this game");
                 return;
             }
         }
-        System.out.println(String.format("Le nombre secret était: %s", ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
+        System.out.println(String.format("%sLe nombre secret était: %s", System.lineSeparator(), ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
         System.out.println("Vous avez perdu!");
         setSecretNumberArrayFromComputer(null);
         log.info("end of this game");
