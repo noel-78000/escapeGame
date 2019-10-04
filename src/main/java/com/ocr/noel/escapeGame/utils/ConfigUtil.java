@@ -45,7 +45,7 @@ public class ConfigUtil {
     public static int[] generateRandomIntegerArray(int length) {
         int[] secretNumber = new int[length];
         for (int i = 0; i < secretNumber.length; i++) {
-            String partOfRandomNumber = String.valueOf(Math.random());
+            String partOfRandomNumber = String.valueOf((int) (10 * Math.random()));
             String aNumber = partOfRandomNumber.substring(partOfRandomNumber.length() - 1);
             secretNumber[i] = Integer.parseInt(aNumber);
         }
