@@ -25,7 +25,7 @@ public class GameDuel extends GameMode {
         AIMemory aiMemory = new AIMemory(ConfigGame.getInstance().getNumbersLength());
         setSecretNumberArrayFromComputer(ConfigUtil.generateRandomIntegerArray(ConfigGame.getInstance().getNumbersLength()));
         if (ConfigGame.getInstance().isDevMode()) {
-            System.out.println(String.format("Mode dev -> le nombre secret de l\'ordinateur est : %s", ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
+            System.out.println(String.format("Mode dev -> le nombre secret de l'ordinateur est : %s", ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
         }
         setSecretNumberArrayFromGamer(getConsoleInputSecretNumberArrayFromGamer());
         boolean gameOver = false;
@@ -38,12 +38,12 @@ public class GameDuel extends GameMode {
             if (!gameOver) {
                 int[] numberAI = aiMemory.getNewNumber(lastResultForAI);
                 String resNumberAI = ConfigUtil.getDisplayableIntFromIntArray(numberAI);
-                System.out.println(String.format("L\'ordinateur a donné: %s", resNumberAI));
+                System.out.println(String.format("L'ordinateur a donné: %s", resNumberAI));
                 System.out.print("Le résultat est: ");
                 lastResultForAI = getResultComparisonFromKeyboardEntries();
                 log.debug("The AI give {}, the result is {}", resNumberAI, lastResultForAI);
                 if (lastResultForAI.replace("=", "").length() == 0) {
-                    System.out.println(String.format("%sL\'ordinateur a gagné!", System.lineSeparator()));
+                    System.out.println(String.format("%sL'ordinateur a gagné!", System.lineSeparator()));
                     gameOver = true;
                 }
             }

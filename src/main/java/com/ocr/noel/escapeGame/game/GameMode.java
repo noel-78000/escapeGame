@@ -73,12 +73,8 @@ public abstract class GameMode {
                 }
                 String compareResult = getStringCompare(intString, getSecretNumberArrayFromComputer());
                 System.out.println(String.format("le resultat est : %s", compareResult));
-                log.debug("The player\'s keyboard input is {}, the result is {}", intString, compareResult);
-                if (compareResult.replace("=", "").length() == 0) {
-                    return true;
-                } else {
-                    return false;
-                }
+                log.debug("The player's keyboard input is {}, the result is {}", intString, compareResult);
+                return compareResult.replace("=", "").length() == 0;
             } else {
                 System.out.println(String.format("Votre saisie est érronée, vous avez tapé: %s, veuillez recommencer.", intString));
                 log.debug("The entry of the gamer is: {}, this is not a number!", intString);

@@ -24,29 +24,30 @@ public class Game {
      */
     private void choiceGameMode() {
         printChoiceModeOfGame();
+        GameMode gameMode;
         while (ConfigUtil.getScannerIn().hasNext()) {
             String line = ConfigUtil.getScannerIn().nextLine().trim().toLowerCase();
             switch (line) {
                 case "1":
-                    GameChallenger gameChallenger = new GameChallenger();
+                    gameMode = new GameChallenger();
                     do {
-                        gameChallenger.startGame();
-                    } while (gameChallenger.askIfReplayGame());
+                        gameMode.startGame();
+                    } while (gameMode.askIfReplayGame());
                     break;
 
                 case "2":
-                    GameDefender gameDefender = new GameDefender();
+                    gameMode = new GameDefender();
                     do {
-                        gameDefender.startGame();
-                    } while (gameDefender.askIfReplayGame());
+                        gameMode.startGame();
+                    } while (gameMode.askIfReplayGame());
                     break;
 
                 case "3":
-                    GameDuel gameDuel = new GameDuel();
+                    gameMode = new GameDuel();
                     do {
-                        gameDuel.startGame();
+                        gameMode.startGame();
                     }
-                    while (gameDuel.askIfReplayGame());
+                    while (gameMode.askIfReplayGame());
                     break;
 
                 case "q":

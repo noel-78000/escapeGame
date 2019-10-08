@@ -28,18 +28,16 @@ public class GameDefender extends GameMode {
         do {
             int[] newProposalNumber = aiMemory.getNewNumber(resultComparison);
             setNumberOfTest(getNumberOfTest() + 1);
-            System.out.println(String.format("%sEssai numéro %d,%sl\'ordinateur propose: %s", System.lineSeparator(), getNumberOfTest(), System.lineSeparator(), ConfigUtil.getDisplayableIntFromIntArray(newProposalNumber)));
+            System.out.println(String.format("%sEssai numéro %d,%sl'ordinateur propose: %s", System.lineSeparator(), getNumberOfTest(), System.lineSeparator(), ConfigUtil.getDisplayableIntFromIntArray(newProposalNumber)));
             System.out.print("Entrer le résultat: ");
             resultComparison = getResultComparisonFromKeyboardEntries();
             log.debug("The proposed AI number is {}, the result is {}", ConfigUtil.getDisplayableIntFromIntArray(newProposalNumber), resultComparison);
-            if (resultComparison.replace("=", "").length() == 0) {
-                computerWin = true;
-            }
+            computerWin = resultComparison.replace("=", "").length() == 0;
         } while (!computerWin && getNumberOfTest() < ConfigGame.getInstance().getNbTestMax());
         if (computerWin) {
-            System.out.println(String.format("%sL\'ordinateur a gagné en %d coups!", System.lineSeparator(), getNumberOfTest()));
+            System.out.println(String.format("%sL'ordinateur a gagné en %d coups!", System.lineSeparator(), getNumberOfTest()));
         } else {
-            System.out.println(String.format("%sL\'ordinateur a perdu!", System.lineSeparator()));
+            System.out.println(String.format("%sL'ordinateur a perdu!", System.lineSeparator()));
         }
         log.info("end of this game");
         setSecretNumberArrayFromGamer(null);

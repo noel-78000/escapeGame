@@ -25,7 +25,7 @@ public class GameChallenger extends GameMode {
             setSecretNumberArrayFromComputer(ConfigUtil.generateRandomIntegerArray(ConfigGame.getInstance().getNumbersLength()));
         }
         if (ConfigGame.getInstance().isDevMode()) {
-            System.out.println(String.format("Mode dev -> le nombre secret de l\'ordinateur est : %s", ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
+            System.out.println(String.format("Mode dev -> le nombre secret de l'ordinateur est : %s", ConfigUtil.getDisplayableIntFromIntArray(getSecretNumberArrayFromComputer())));
         }
         while (getNumberOfTest() < ConfigGame.getInstance().getNbTestMax()) {
             if (isNewEntryFromGamerOK()) {
