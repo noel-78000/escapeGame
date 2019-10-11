@@ -25,29 +25,22 @@ public class Game {
     private void choiceGameMode() {
         printChoiceModeOfGame();
         GameMode gameMode;
-        while (ConfigUtil.getScannerIn().hasNext()) {
+        while (ConfigUtil.getScannerIn().hasNextLine()) {
             String line = ConfigUtil.getScannerIn().nextLine().trim().toLowerCase();
             switch (line) {
                 case "1":
                     gameMode = new GameChallenger();
-                    do {
-                        gameMode.startGame();
-                    } while (gameMode.askIfReplayGame());
+                    startGameMode(gameMode);
                     break;
 
                 case "2":
                     gameMode = new GameDefender();
-                    do {
-                        gameMode.startGame();
-                    } while (gameMode.askIfReplayGame());
+                    startGameMode(gameMode);
                     break;
 
                 case "3":
                     gameMode = new GameDuel();
-                    do {
-                        gameMode.startGame();
-                    }
-                    while (gameMode.askIfReplayGame());
+                    startGameMode(gameMode);
                     break;
 
                 case "q":
@@ -70,6 +63,17 @@ public class Game {
         System.out.println(String.format("%s - %s", GameChoiceEnum.DEFENDER.getChoice(), GameChoiceEnum.DEFENDER.getDescription()));
         System.out.println(String.format("%s - %s", GameChoiceEnum.DUEL.getChoice(), GameChoiceEnum.DUEL.getDescription()));
         System.out.println(String.format("%s - %s", GameChoiceEnum.GAME_LEAVE.getChoice(), GameChoiceEnum.GAME_LEAVE.getDescription()));
+    }
+
+    /**
+     * Method to start a kind of game mode and ask if replay it
+     *
+     * @param gameMode the extended object from GameMode
+     */
+    private void startGameMode(GameMode gameMode) {
+        do {
+            gameMode.startGame();
+        } while (gameMode.askIfReplayGame());
     }
 
     /**
